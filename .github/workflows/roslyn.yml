@@ -1,4 +1,4 @@
-name: Build and Analyze
+name: C# Static Analysis
 on:
   push:
     branches:
@@ -8,20 +8,19 @@ on:
       - main
 
 jobs:
-  build:
+  analyze:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        
-      - name: Setup .NET Core
+
+      - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.x'
+          dotnet-version: '5.0.x'
 
-      - name: Restore dependencies
-        run: dotnet restore
-        
-      - name: Run Roslyn Analyzers
-        run: dotnet build /p:RunAnalyzersDuringBuild=true
+      - name: Install Roslyn Analyzers
+        run: dotnet tool install --global dotnet-analyzers
+
+      - name: Analyze .cs files
+        run: find . -name "*.cs" -exec dotnet-analyzers {} \;
