@@ -20,3 +20,4 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           VALIDATE_C_SHARP: true
           LINTER_RULES_PATH: Assets/Scripts
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
