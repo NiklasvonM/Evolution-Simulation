@@ -1,0 +1,29 @@
+---
+name: Super-Linter
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  super-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        # https://github.com/actions/checkout/issues/317#issuecomment-737107262
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+
+      - name: Run Super-Linter on C# files
+        uses: github/super-linter@v4
+        env:
+          DEFAULT_WORKSPACE: ${{ github.workspace }}
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: main
+          VALIDATE_C_SHARP: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
