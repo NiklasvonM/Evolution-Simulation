@@ -14,12 +14,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: List directory contents
-        run: ls -al
-
       - name: Run Super-Linter
         uses: github/super-linter@v4
         env:
+          DEFAULT_WORKSPACE: ${{ github.workspace }}
           VALIDATE_ALL_CODEBASE: false
           VALIDATE_C_SHARP: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
