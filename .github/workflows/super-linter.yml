@@ -21,6 +21,7 @@ jobs:
         uses: github/super-linter@v4
         env:
           DEFAULT_WORKSPACE: ${{ github.workspace }}
-          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_ALL_CODEBASE: true # Lint all files
+          DEFAULT_BRANCH: main # Target branch
           VALIDATE_C_SHARP: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
