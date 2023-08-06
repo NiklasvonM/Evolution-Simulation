@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class HexGrid : MonoBehaviour
+public class CreateHexGrid : MonoBehaviour
 {
     public GameObject hexPrefab;
     private int width = 100;
