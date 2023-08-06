@@ -13,6 +13,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        # https://github.com/actions/checkout/issues/317#issuecomment-737107262
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Run Super-Linter
         uses: github/super-linter@v4
