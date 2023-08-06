@@ -1,3 +1,4 @@
+---
 name: Super-Linter
 on:
   push:
@@ -17,12 +18,17 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
 
-      - name: Run Super-Linter
+      - name: Copy C# files to temporary directory
+        run: |
+          mkdir csharp-files
+          find . -name "*.cs" -exec cp --parents \{} csharp-files/ \;
+
+      - name: Run Super-Linter on C# files
         uses: github/super-linter@v4
         env:
-          DEFAULT_WORKSPACE: ${{ github.workspace }}
-          VALIDATE_ALL_CODEBASE: true # Lint all files
-          DEFAULT_BRANCH: main # Target branch
+          DEFAULT_WORKSPACE: ${{ github.workspace }}/csharp-files
+          VALIDATE_ALL_CODEBASE: true
+          DEFAULT_BRANCH: main
           VALIDATE_C_SHARP: true
-          LINTER_RULES_PATH: Assets/Scripts
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
