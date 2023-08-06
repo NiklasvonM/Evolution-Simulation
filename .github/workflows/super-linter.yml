@@ -24,4 +24,5 @@ jobs:
           VALIDATE_ALL_CODEBASE: true # Lint all files
           DEFAULT_BRANCH: main # Target branch
           VALIDATE_C_SHARP: true
+          LINTER_RULES_PATH: Assets/Scripts
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
