@@ -55,7 +55,6 @@ public class BunnyObject : MonoBehaviour
 
     private void Jump()
     {
-        Debug.Log("Jumping");
         _TimeSinceLastJump = 0f;
         // Turn in a random direction. The probability density is highest for 0 degrees and falls off to +-180 degrees.
         RotateRigidBodyRandomly();
