@@ -29,8 +29,8 @@ public class Bunny : Earthling
         BunnyGenome = new BunnyGenome();
         BaseCharacteristics = new Dictionary<string, float>
         {
-            { "jumping_strength", 100f },
-            { "jumping_frequency", 5f },
+            { "jumping_strength", 50f },
+            { "jumping_frequency", 1f },
             { "feeding_frequency", 100f },
             { "stamina", 10f },
             { "stamina_recovery", 1f },
@@ -39,6 +39,8 @@ public class Bunny : Earthling
             { "adulthood_age", 100f },
             { "drinking_frequency", 5f },
             { "size", 1f },
+            { "vision_cone_degrees", 90f },
+            { "vision_distance", 10f }
         };
         Sex = sex;
     }
