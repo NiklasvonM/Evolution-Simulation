@@ -15,9 +15,10 @@ public abstract class Earthling
     public Dictionary<string, float> BaseCharacteristics { get; protected set; }
     public Sex Sex;
 
+    // Modify the base characteristics based on the multipliers given by the genes
     public Dictionary<string, float> GetModifiedCharacteristics()
     {
-        var modifiedCharacteristics = new Dictionary<string, float>(BaseCharacteristics);
+        var modifiedCharacteristics = new Dictionary<string, float>(this.BaseCharacteristics);
 
         foreach (var gene in Genome.Genes)
         {
@@ -42,7 +43,7 @@ public abstract class Earthling
         return modifiedCharacteristics;
     }
 
-    public T Breed<T>(T partner) where T : Earthling, new()
+    public T Breed<T>(T partner) where T : Earthling
     {
         // Checking if T has a constructor that takes a Sex argument
         var constructor = typeof(T).GetConstructor(new[] { typeof(Sex) });
@@ -60,6 +61,7 @@ public abstract class Earthling
 
             Gene inheritedGene = new Gene(
                 name: geneFromFather.Name,
+                // Randomly use the gene strength from either father or mother
                 strength: UnityEngine.Random.value > 0.5f ? geneFromFather.Strength : geneFromMother.Strength,
                 characteristics: geneFromFather.Characteristics
             );
