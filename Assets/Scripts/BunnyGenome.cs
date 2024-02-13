@@ -28,6 +28,14 @@ public class BunnyGenome : IGenome
                     { "feeding_frequency", 0.5f}
                 }
             ),
+            new Gene(
+                name: "VisionCone",
+                strength: UnityEngine.Random.Range(0f, 1f),
+                characteristics: new Dictionary<string, float> {
+                    { "vision_cone_degrees", 2f },
+                    { "vision_distance", 0.5f}
+                }
+            ),
         };
     }
 }
