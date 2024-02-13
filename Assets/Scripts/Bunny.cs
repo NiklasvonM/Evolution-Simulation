@@ -31,13 +31,14 @@ public class Bunny : Earthling
         {
             { "jumping_strength", 50f },
             { "jumping_frequency", 1f },
+            { "stamina_required_to_jump", 10f },
             { "feeding_frequency", 100f },
-            { "stamina", 10f },
-            { "stamina_recovery", 1f },
+            { "maximum_stamina", 100f },
+            { "stamina_recovery", 0.1f },
             { "reproduction_frequency", 100f },
             { "maximum_age", 1000f },
-            { "adulthood_age", 100f },
-            { "drinking_frequency", 5f },
+            { "adulthood_age", 10f },
+            { "drinking_frequency", 50f },
             { "size", 1f },
             { "vision_cone_degrees", 90f },
             { "vision_distance", 10f }
